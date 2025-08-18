@@ -1,0 +1,221 @@
+/**
+ * CSS Styles for Editor Linting Visual Indicators
+ */
+
+/* Base indicator styles */
+.obsidian-lint-indicator {
+  position: absolute;
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+
+.obsidian-lint-indicator:hover {
+  opacity: 1;
+}
+
+/* Error indicators */
+.obsidian-lint-error {
+  background-color: #ff4757;
+  border-left: 2px solid #ff3742;
+}
+
+.obsidian-lint-error::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #ff3742;
+  animation: pulse-error 2s infinite;
+}
+
+/* Warning indicators */
+.obsidian-lint-warning {
+  background-color: #ffa502;
+  border-left: 2px solid #ff9500;
+}
+
+.obsidian-lint-warning::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #ff9500;
+  animation: pulse-warning 2s infinite;
+}
+
+/* Info indicators */
+.obsidian-lint-info {
+  background-color: #3742fa;
+  border-left: 2px solid #2f3542;
+}
+
+.obsidian-lint-info::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #2f3542;
+  animation: pulse-info 2s infinite;
+}
+
+/* Fixable indicators */
+.obsidian-lint-fixable {
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.obsidian-lint-fixable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.obsidian-lint-fixable::after {
+  content: '🔧';
+  position: absolute;
+  right: -16px;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.obsidian-lint-fixable:hover::after {
+  opacity: 1;
+}
+
+/* Pulse animations */
+@keyframes pulse-error {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 4px #ff4757;
+  }
+}
+
+@keyframes pulse-warning {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 4px #ffa502;
+  }
+}
+
+@keyframes pulse-info {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 4px #3742fa;
+  }
+}
+
+/* Tooltip styles */
+.obsidian-lint-indicator[title] {
+  position: relative;
+}
+
+.obsidian-lint-indicator[title]:hover::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  border: 1px solid var(--background-modifier-border);
+  max-width: 300px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Dark theme adjustments */
+.theme-dark .obsidian-lint-indicator[title]:hover::before {
+  background-color: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+/* Light theme adjustments */
+.theme-light .obsidian-lint-indicator[title]:hover::before {
+  background-color: var(--background-primary);
+  border-color: var(--background-modifier-border);
+}
+
+/* Status bar integration */
+.obsidian-lint-status {
+  cursor: pointer;
+}
+
+.obsidian-lint-status:hover {
+  opacity: 0.8;
+}
+
+/* Quick fix menu (for future implementation) */
+.obsidian-lint-quickfix-menu {
+  position: absolute;
+  background-color: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 4px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1002;
+  min-width: 200px;
+}
+
+.obsidian-lint-quickfix-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-normal);
+}
+
+.obsidian-lint-quickfix-item:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.obsidian-lint-quickfix-item-title {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.obsidian-lint-quickfix-item-description {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .obsidian-lint-indicator {
+    width: 6px;
+    height: 18px;
+  }
+
+  .obsidian-lint-indicator[title]:hover::before {
+    max-width: 250px;
+    font-size: 11px;
+  }
+}

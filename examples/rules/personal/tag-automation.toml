@@ -1,0 +1,65 @@
+# Personal Tag Automation Rule
+# Intelligent tagging for personal knowledge management
+
+[rule]
+id = "tag-automation.intelligent"
+name = "Intelligent Tag Automation"
+description = "Automatically generates and manages tags based on content and context"
+category = "tagging"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Templates/**", "Archive/**"]
+
+[settings]
+auto_tag_from_folders = true
+auto_tag_from_content = true
+hierarchical_tags = true
+max_auto_tags = 10
+min_tag_confidence = 0.7
+
+# Folder-based tagging
+[settings.folder_tagging]
+create_hierarchical = true
+include_parent_folders = true
+max_depth = 3
+separator = "/"
+
+# Content-based tagging
+[settings.content_tagging]
+analyze_headings = true
+analyze_links = true
+analyze_keywords = true
+use_nlp_extraction = true
+custom_keyword_lists = true
+
+# Tag management
+[settings.tag_management]
+normalize_case = "lowercase"
+remove_duplicates = true
+merge_similar_tags = true
+similarity_threshold = 0.8
+suggest_tag_cleanup = true
+
+# Custom keyword lists for auto-tagging
+[settings.keywords]
+learning = ["study", "learn", "course", "tutorial", "education", "skill"]
+project = ["project", "task", "goal", "milestone", "deadline", "deliverable"]
+idea = ["idea", "brainstorm", "concept", "innovation", "creative", "inspiration"]
+reference = ["reference", "resource", "tool", "guide", "documentation", "manual"]
+personal = ["journal", "reflection", "thoughts", "feelings", "experience", "memory"]
+
+# Context-aware tagging
+[settings.context]
+time_based_tags = true
+location_based_tags = false
+mood_based_tags = true
+activity_based_tags = true
+seasonal_tags = true
+
+# Integration settings
+[settings.integration]
+sync_with_calendar = false
+import_from_bookmarks = true
+connect_to_tasks = true
+link_to_contacts = false

@@ -1,0 +1,45 @@
+# Minimal Work Frontmatter Rule
+# Basic frontmatter for professional environments
+
+[rule]
+id = "frontmatter-required-fields.work"
+name = "Work Frontmatter"
+description = "Minimal frontmatter requirements for professional knowledge bases"
+category = "frontmatter"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Archive/**", "Personal/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*", "*.tmp", "*.draft"]
+
+[settings]
+required_fields = [
+  "title",
+  "status",
+  "date_created",
+  "owner",
+  "project"
+]
+
+# Conservative field validation
+[settings.field_validation]
+status_values = ["draft", "review", "approved", "archived"]
+date_format = "YYYY-MM-DD"
+owner_format = "email"
+project_from_path = true
+
+# Minimal auto-generation
+[settings.auto_generation]
+generate_aliases_from_title = false
+extract_tags_from_content = false
+update_date_on_save = false
+preserve_existing_fields = true
+
+# Work-specific settings
+[settings.work]
+require_approval_workflow = true
+track_review_dates = true
+enforce_naming_conventions = false
+allow_personal_tags = false
+require_project_association = true

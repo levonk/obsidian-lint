@@ -1,0 +1,324 @@
+/* Obsidian Lint Plugin Settings Styles */
+
+.profile-info {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 8px 0;
+}
+
+.profile-current {
+  font-weight: 600;
+  color: var(--text-accent);
+  margin: 0 0 4px 0;
+}
+
+.profile-description {
+  color: var(--text-muted);
+  margin: 0 0 4px 0;
+  font-style: italic;
+}
+
+.profile-path {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+.rule-toggles {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 8px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.rule-group {
+  margin-bottom: 16px;
+}
+
+.rule-group:last-child {
+  margin-bottom: 0;
+}
+
+.rule-group h4 {
+  color: var(--text-accent);
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 4px;
+}
+
+.no-rules-message {
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+  background: var(--background-secondary);
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.bulk-operations-description {
+  color: var(--text-muted);
+  margin: 8px 0 16px 0;
+  padding: 8px 12px;
+  background: var(--background-secondary);
+  border-radius: 4px;
+  border-left: 3px solid var(--text-accent);
+}
+
+/* Button styling enhancements */
+.setting-item-control button.mod-cta {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+.setting-item-control button.mod-warning {
+  background: var(--color-orange);
+  color: var(--text-on-accent);
+}
+
+.setting-item-control button.mod-warning:hover {
+  background: var(--color-red);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .rule-toggles {
+    max-height: 300px;
+  }
+
+  .profile-info {
+    padding: 8px;
+  }
+}
+
+/* Dark theme adjustments */
+.theme-dark .profile-info {
+  background: var(--background-primary-alt);
+}
+
+.theme-dark .bulk-operations-description {
+  background: var(--background-primary-alt);
+}
+
+/* Loading states */
+.loading-rules {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading-rules::after {
+  content: ' (Loading...)';
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Toggle switch styling */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Accessibility improvements */
+.setting-item-control button:focus {
+  outline: 2px solid var(--text-accent);
+  outline-offset: 2px;
+}
+
+.setting-item-control .dropdown:focus {
+  outline: 2px solid var(--text-accent);
+  outline-offset: 2px;
+}
+
+/* Status indicators */
+.rule-enabled {
+  color: var(--color-green);
+}
+
+.rule-disabled {
+  color: var(--text-muted);
+}
+
+.profile-active {
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
+/* Rule statistics */
+.rule-statistics {
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+  background: var(--background-secondary);
+  border-radius: 6px;
+  margin: 8px 0;
+  flex-wrap: wrap;
+}
+
+.rule-stat {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.rule-stat-enabled {
+  background: var(--color-green);
+  color: var(--text-on-accent);
+}
+
+.rule-stat-disabled {
+  background: var(--color-orange);
+  color: var(--text-on-accent);
+}
+
+/* Rule search and filter */
+.rule-search-container {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 8px 0;
+  background: var(--background-secondary);
+}
+
+/* Rule group enhancements */
+.rule-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.rule-group-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.rule-group-actions button {
+  padding: 4px 8px;
+  font-size: 0.8em;
+  border-radius: 4px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.rule-group-actions button:hover {
+  background: var(--background-modifier-hover);
+}
+
+.rule-group-actions button.mod-warning {
+  background: var(--color-orange);
+  color: var(--text-on-accent);
+  border-color: var(--color-orange);
+}
+
+.rule-group-actions button.mod-warning:hover {
+  background: var(--color-red);
+  border-color: var(--color-red);
+}
+
+.rule-group-rules {
+  margin-left: 16px;
+}
+
+/* Bulk operation sections */
+.bulk-operation-options,
+.vault-operations,
+.folder-operations,
+.file-selection-operations,
+.scheduled-operations {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 8px 0;
+  background: var(--background-secondary);
+}
+
+.bulk-operation-options h4,
+.vault-operations h4,
+.folder-operations h4,
+.file-selection-operations h4,
+.scheduled-operations h4 {
+  color: var(--text-accent);
+  margin: 0 0 12px 0;
+  font-size: 1em;
+  border-bottom: 1px solid var(--background-modifier-border);
+  padding-bottom: 4px;
+}
+
+/* Enhanced button styling */
+.setting-item-control button.mod-small {
+  padding: 2px 6px;
+  font-size: 0.8em;
+  min-height: auto;
+}
+
+/* File pattern inputs */
+.setting-item-control input[type='text'] {
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .rule-statistics {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .rule-group-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .rule-group-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* Animation for collapsible sections */
+.rule-group-rules {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.rule-group.collapsed .rule-group-rules {
+  max-height: 0;
+}
+
+/* Loading states for enhanced sections */
+.bulk-operation-options.loading,
+.vault-operations.loading,
+.folder-operations.loading,
+.file-selection-operations.loading,
+.scheduled-operations.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Success/error states */
+.operation-success {
+  border-left: 3px solid var(--color-green);
+  background: var(--background-secondary);
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.operation-error {
+  border-left: 3px solid var(--color-red);
+  background: var(--background-secondary);
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 0 4px 4px 0;
+}

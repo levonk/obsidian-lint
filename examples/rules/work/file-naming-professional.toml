@@ -1,0 +1,48 @@
+# Professional File Naming Rule
+# Enforces consistent naming conventions for work environments
+
+[rule]
+id = "file-naming.professional"
+name = "Professional File Naming"
+description = "Enforces professional naming conventions and standards"
+category = "organization"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Personal/**", "Scratch/**"]
+
+[settings]
+naming_convention = "kebab-case"
+max_filename_length = 50
+allow_numbers = true
+allow_underscores = false
+require_descriptive_names = true
+
+# Professional naming rules
+[settings.professional]
+prohibit_personal_names = true
+require_project_prefix = true
+enforce_version_suffix = false
+standardize_abbreviations = true
+
+# Abbreviation dictionary
+[settings.abbreviations]
+"meeting" = "mtg"
+"document" = "doc"
+"specification" = "spec"
+"requirements" = "req"
+"architecture" = "arch"
+"design" = "design"
+
+# Project prefix mapping
+[settings.project_prefixes]
+"alpha-project" = "alpha"
+"beta-initiative" = "beta"
+"gamma-research" = "gamma"
+
+# Validation rules
+[settings.validation]
+min_name_length = 5
+require_date_for_meetings = true
+prohibit_special_characters = ["!", "@", "#", "$", "%", "^", "&", "*"]
+enforce_consistent_separators = true

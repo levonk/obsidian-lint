@@ -1,0 +1,20 @@
+[rule]
+id = "file-path-organization.by-date"
+name = "By Date File Organization"
+description = "Organize files by creation date in hierarchical folders"
+category = "file-organization"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/**", "Templates/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*"]
+
+[settings]
+base_directory = "Notes"
+create_subdirectories = true
+update_links = true
+preserve_existing_structure = false
+date_format = "YYYY/MM"
+topic_extraction_method = "frontmatter"
+max_depth = 3

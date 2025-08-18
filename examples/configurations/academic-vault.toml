@@ -1,0 +1,29 @@
+# Academic Research Vault Configuration
+# Optimized for academic research and literature management
+
+[general]
+vault_root = "/path/to/academic-vault"
+dry_run = false
+verbose = true
+fix = true
+parallel = true
+max_concurrency = 6
+
+[profiles]
+active = "academic"
+
+[profiles.academic]
+name = "Academic Research Profile"
+description = "Comprehensive rules for academic research and literature management"
+rules_path = "rules/academic"
+
+# Alternative profiles for different research phases
+[profiles.literature-review]
+name = "Literature Review Profile"
+description = "Focused on literature review and citation management"
+rules_path = "rules/literature-review"
+
+[profiles.thesis-writing]
+name = "Thesis Writing Profile"
+description = "Structured rules for thesis and dissertation writing"
+rules_path = "rules/thesis-writing"

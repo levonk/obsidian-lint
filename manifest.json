@@ -1,0 +1,11 @@
+{
+  "id": "obsidian-lint",
+  "name": "Obsidian Lint",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "A comprehensive linting and fixing solution for Obsidian vaults that ensures notes conform to established organizational standards.",
+  "author": "Obsidian Lint Tool",
+  "authorUrl": "https://github.com/obsidian-lint/obsidian-lint",
+  "fundingUrl": "https://github.com/sponsors/obsidian-lint",
+  "isDesktopOnly": false
+}

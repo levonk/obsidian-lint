@@ -1,0 +1,55 @@
+# Academic Frontmatter Rule
+# Comprehensive frontmatter for academic research notes
+
+[rule]
+id = "frontmatter-required-fields.academic"
+name = "Academic Frontmatter"
+description = "Comprehensive frontmatter for academic research including citations and metadata"
+category = "frontmatter"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Templates/**", "Archive/**", "Inbox/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*", "*.tmp"]
+
+[settings]
+required_fields = [
+  "title",
+  "aliases",
+  "tags",
+  "status",
+  "date_created",
+  "date_updated",
+  "author",
+  "source",
+  "doi",
+  "year",
+  "research_area",
+  "methodology",
+  "key_findings"
+]
+
+# Field validation rules
+[settings.field_validation]
+status_values = ["to-read", "reading", "read", "reviewed", "cited", "archived"]
+date_format = "YYYY-MM-DD"
+author_format = "Last, First"
+doi_pattern = "^10\\..+"
+year_range = [1900, 2030]
+
+# Auto-generation settings
+[settings.auto_generation]
+generate_aliases_from_title = true
+extract_tags_from_content = true
+update_date_on_save = true
+generate_bibliography_key = true
+
+# Academic-specific settings
+[settings.academic]
+require_citation_format = "APA"
+enforce_research_area_taxonomy = true
+validate_methodology_terms = true
+require_abstract_section = true
+min_abstract_words = 50
+max_abstract_words = 300

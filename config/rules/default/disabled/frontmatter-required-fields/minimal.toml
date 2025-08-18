@@ -1,0 +1,18 @@
+[rule]
+id = "frontmatter-required-fields.minimal"
+name = "Minimal Frontmatter Fields"
+description = "Enforce minimal required frontmatter fields (title and status only)"
+category = "frontmatter"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/Templates/**", "Meta/MOCs/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*", "README.md"]
+
+[settings]
+required_fields = ["title", "status"]
+auto_fix = true
+default_status = "draft"
+date_format = "YYYY-MM-DD"
+strict_arrays = false

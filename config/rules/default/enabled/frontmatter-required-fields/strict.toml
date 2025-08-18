@@ -1,0 +1,17 @@
+[rule]
+id = "frontmatter-required-fields.strict"
+name = "Strict Frontmatter Fields"
+description = "Enforce all required frontmatter fields with strict validation"
+category = "frontmatter"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/Templates/**", "Meta/MOCs/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*", "README.md"]
+
+[settings]
+required_fields = ["title", "aliases", "tags", "status", "date_created", "date_updated"]
+auto_fix = true
+default_status = "draft"
+date_format = "YYYY-MM-DD"

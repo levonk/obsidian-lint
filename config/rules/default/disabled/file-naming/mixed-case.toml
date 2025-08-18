@@ -1,0 +1,19 @@
+[rule]
+id = "file-naming.mixed-case"
+name = "Mixed Case File Naming"
+description = "Allow mixed case naming with flexible conventions"
+category = "file-naming"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/Templates/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*", "README.md"]
+
+[settings]
+allow_numbers = true
+allow_underscores = true
+max_length = 100
+update_links = true
+preserve_extension = true
+case_sensitive = false

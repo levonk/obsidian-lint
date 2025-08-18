@@ -1,0 +1,41 @@
+# Citation Management Rule
+# Manages academic citations and bibliography
+
+[rule]
+id = "citation-management.academic"
+name = "Academic Citation Management"
+description = "Ensures proper citation format and bibliography maintenance"
+category = "citation"
+
+[config]
+path_allowlist = ["Literature/**/*.md", "Papers/**/*.md", "Research/**/*.md"]
+path_denylist = ["Templates/**", "Archive/**"]
+
+[settings]
+citation_style = "APA"
+require_bibliography = true
+validate_doi_links = true
+check_citation_completeness = true
+
+# Citation format requirements
+[settings.citation_format]
+author_format = "Last, F. M."
+title_format = "sentence_case"
+journal_format = "title_case"
+require_page_numbers = true
+require_publication_year = true
+
+# Bibliography settings
+[settings.bibliography]
+auto_generate = true
+sort_by = "author_year"
+include_abstracts = false
+deduplicate_entries = true
+validate_urls = true
+
+# Integration settings
+[settings.integration]
+zotero_sync = true
+mendeley_sync = false
+bibtex_export = true
+csl_style_path = "styles/apa.csl"

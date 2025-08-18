@@ -1,0 +1,16 @@
+[rule]
+id = "attachment-organization.keep-with-note"
+name = "Keep Attachments With Note"
+description = "Keep attachments in the same directory as their referencing notes"
+category = "attachment"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/Templates/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*"]
+
+[settings]
+create_subdirectories = false
+preserve_structure = true
+update_links = true

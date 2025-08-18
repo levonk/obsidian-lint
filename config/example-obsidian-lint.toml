@@ -1,0 +1,43 @@
+# Example Obsidian Lint Configuration File
+# This file demonstrates the configuration options available for obsidian-lint
+
+[general]
+# Path to the Obsidian vault (optional, defaults to current directory)
+vault_root = "/path/to/your/vault"
+
+# Run in dry-run mode (show changes without applying them)
+dry_run = false
+
+# Enable verbose output for detailed logging
+verbose = true
+
+# Enable automatic fixing of issues
+fix = true
+
+# Enable parallel processing for better performance
+parallel = true
+
+# Maximum number of concurrent file processing operations
+max_concurrency = 4
+
+[profiles]
+# The active profile to use
+active = "default"
+
+# Default profile configuration
+[profiles.default]
+name = "Default Profile"
+description = "Standard Obsidian organization rules"
+rules_path = "rules/default"
+
+# Work profile for minimal rules
+[profiles.work]
+name = "Work Profile"
+description = "Minimal rules for work vaults"
+rules_path = "rules/work"
+
+# Personal profile for comprehensive organization
+[profiles.personal]
+name = "Personal Profile"
+description = "Comprehensive rules for personal knowledge management"
+rules_path = "rules/personal"

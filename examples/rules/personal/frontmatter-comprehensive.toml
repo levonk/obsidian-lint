@@ -1,0 +1,63 @@
+# Comprehensive Personal Frontmatter Rule
+# Full frontmatter for personal knowledge management
+
+[rule]
+id = "frontmatter-required-fields.comprehensive"
+name = "Comprehensive Personal Frontmatter"
+description = "Complete frontmatter setup for personal knowledge management"
+category = "frontmatter"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Templates/**", "Archive/**"]
+
+[settings]
+required_fields = [
+  "title",
+  "aliases",
+  "tags",
+  "status",
+  "date_created",
+  "date_updated",
+  "category",
+  "priority",
+  "energy_level",
+  "time_estimate",
+  "related_notes",
+  "mood",
+  "weather"
+]
+
+# Flexible field validation
+[settings.field_validation]
+status_values = ["inbox", "processing", "active", "someday", "done", "archived"]
+priority_values = ["low", "medium", "high", "urgent"]
+energy_level_values = ["low", "medium", "high"]
+category_values = ["learning", "project", "idea", "reference", "journal", "goal"]
+date_format = "YYYY-MM-DD"
+
+# Comprehensive auto-generation
+[settings.auto_generation]
+generate_aliases_from_title = true
+extract_tags_from_content = true
+update_date_on_save = true
+auto_categorize_by_path = true
+generate_related_notes = true
+extract_mood_from_content = false
+get_weather_data = false
+
+# Personal productivity settings
+[settings.productivity]
+track_time_spent = true
+estimate_reading_time = true
+calculate_complexity_score = true
+suggest_next_actions = true
+track_completion_rate = true
+
+# Creativity and reflection settings
+[settings.creativity]
+allow_emoji_in_tags = true
+support_mood_tracking = true
+enable_gratitude_prompts = false
+suggest_creative_connections = true
+track_inspiration_sources = true

@@ -1,0 +1,108 @@
+name: Plugin Validation
+
+on:
+  push:
+    paths:
+      - 'src/plugin/**'
+      - 'manifest.json'
+      - 'package.json'
+  pull_request:
+    paths:
+      - 'src/plugin/**'
+      - 'manifest.json'
+      - 'package.json'
+
+jobs:
+  validate-plugin:
+    name: Validate Obsidian Plugin
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Validate manifest.json
+        run: |
+          # Check if manifest.json is valid JSON
+          if ! jq empty manifest.json; then
+            echo "❌ manifest.json is not valid JSON"
+            exit 1
+          fi
+
+          # Check required fields
+          REQUIRED_FIELDS=("id" "name" "version" "minAppVersion" "description")
+          for field in "${REQUIRED_FIELDS[@]}"; do
+            if ! jq -e ".$field" manifest.json > /dev/null; then
+              echo "❌ Missing required field: $field"
+              exit 1
+            fi
+          done
+
+          echo "✅ manifest.json validation passed"
+
+      - name: Check version consistency
+        run: |
+          MANIFEST_VERSION=$(jq -r '.version' manifest.json)
+          PACKAGE_VERSION=$(jq -r '.version' package.json)
+
+          if [ "$MANIFEST_VERSION" != "$PACKAGE_VERSION" ]; then
+            echo "❌ Version mismatch: manifest.json ($MANIFEST_VERSION) != package.json ($PACKAGE_VERSION)"
+            exit 1
+          fi
+
+          echo "✅ Version consistency check passed"
+
+      - name: Build plugin
+        run: bun run build:plugin
+
+      - name: Validate plugin build
+        run: |
+          # Check if main plugin file exists
+          if [ ! -f "dist/plugin/index.js" ]; then
+            echo "❌ Plugin build failed: dist/plugin/index.js not found"
+            exit 1
+          fi
+
+          # Check if plugin file is not empty
+          if [ ! -s "dist/plugin/index.js" ]; then
+            echo "❌ Plugin build failed: dist/plugin/index.js is empty"
+            exit 1
+          fi
+
+          echo "✅ Plugin build validation passed"
+
+      - name: Test plugin packaging
+        run: |
+          bun run package:plugin
+
+          # Check if plugin zip was created
+          if [ ! -f "obsidian-lint-plugin.zip" ]; then
+            echo "❌ Plugin packaging failed: obsidian-lint-plugin.zip not found"
+            exit 1
+          fi
+
+          # Check zip contents
+          if ! unzip -t obsidian-lint-plugin.zip; then
+            echo "❌ Plugin zip is corrupted"
+            exit 1
+          fi
+
+          echo "✅ Plugin packaging validation passed"
+
+      - name: Plugin size check
+        run: |
+          PLUGIN_SIZE=$(stat -f%z obsidian-lint-plugin.zip 2>/dev/null || stat -c%s obsidian-lint-plugin.zip)
+          MAX_SIZE=$((10 * 1024 * 1024))  # 10MB limit
+
+          if [ "$PLUGIN_SIZE" -gt "$MAX_SIZE" ]; then
+            echo "❌ Plugin size ($PLUGIN_SIZE bytes) exceeds maximum (10MB)"
+            exit 1
+          fi
+
+          echo "✅ Plugin size check passed ($PLUGIN_SIZE bytes)"

@@ -1,0 +1,17 @@
+[rule]
+id = "file-naming.kebab-case"
+name = "Kebab Case File Naming"
+description = "Enforce kebab-case naming convention for all markdown files"
+category = "file-naming"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/Templates/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*", "README.md"]
+
+[settings]
+allow_numbers = true
+allow_underscores = false
+max_length = 100
+update_links = true

@@ -1,0 +1,17 @@
+[rule]
+id = "attachment-organization.centralized"
+name = "Centralized Attachment Organization"
+description = "Move all attachments to Meta/Attachments directory"
+category = "attachment"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/Templates/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*"]
+
+[settings]
+attachment_directory = "Meta/Attachments"
+create_subdirectories = true
+preserve_structure = false
+update_links = true

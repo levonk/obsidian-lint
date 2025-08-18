@@ -1,0 +1,33 @@
+# Personal Knowledge Management Configuration
+# Comprehensive setup for personal learning and note-taking
+
+[general]
+vault_root = "/path/to/personal-vault"
+dry_run = false
+verbose = true
+fix = true
+parallel = true
+max_concurrency = 8
+
+[profiles]
+active = "personal"
+
+[profiles.personal]
+name = "Personal PKM Profile"
+description = "Comprehensive personal knowledge management with full automation"
+rules_path = "rules/personal"
+
+[profiles.learning]
+name = "Learning Profile"
+description = "Optimized for learning notes and course materials"
+rules_path = "rules/learning"
+
+[profiles.creative]
+name = "Creative Profile"
+description = "Flexible rules for creative writing and brainstorming"
+rules_path = "rules/creative"
+
+[profiles.minimal]
+name = "Minimal Profile"
+description = "Basic rules for quick note-taking"
+rules_path = "rules/minimal"

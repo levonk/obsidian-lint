@@ -1,0 +1,28 @@
+# Work/Professional Vault Configuration
+# Conservative settings for professional environments
+
+[general]
+vault_root = "/path/to/work-vault"
+dry_run = true  # Conservative: preview changes first
+verbose = false # Minimal output for clean logs
+fix = false     # Manual review required
+parallel = true
+max_concurrency = 4
+
+[profiles]
+active = "work"
+
+[profiles.work]
+name = "Work Profile"
+description = "Minimal, conservative rules for professional use"
+rules_path = "rules/work"
+
+[profiles.team-shared]
+name = "Team Shared Profile"
+description = "Rules for shared team knowledge bases"
+rules_path = "rules/team-shared"
+
+[profiles.project-docs]
+name = "Project Documentation Profile"
+description = "Rules for project documentation and specifications"
+rules_path = "rules/project-docs"

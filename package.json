@@ -1,0 +1,125 @@
+{
+  "name": "obsidian-lint",
+  "version": "1.0.0",
+  "description": "A comprehensive linting and fixing solution for Obsidian vaults",
+  "type": "module",
+  "main": "./dist/cli/index.js",
+  "bin": {
+    "obsidian-lint": "./dist/cli/index.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/cli/index.js",
+      "types": "./dist/cli/index.d.ts"
+    },
+    "./core": {
+      "import": "./dist/core/index.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./plugin": {
+      "import": "./dist/plugin/index.js",
+      "types": "./dist/plugin/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "bun run scripts/build.js",
+    "build:clean": "rm -rf dist",
+    "build:compile": "bun build src/cli/index.ts --outdir dist/cli --target node --format esm && bun build src/plugin/index.ts --outdir dist/plugin --target node --format esm && tsc --emitDeclarationOnly",
+    "build:plugin": "bun build src/plugin/index.ts --outdir dist/plugin --target node --format esm && tsc --emitDeclarationOnly --outDir dist",
+    "build:watch": "bun build src/cli/index.ts --outdir dist/cli --target node --format esm --watch",
+    "dev": "bun run src/cli/index.ts",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:ci": "bun test --coverage",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "format:check": "prettier --check src/**/*.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run build && bun run test:ci && bun run lint && bun run typecheck",
+    "prepack": "bun run build",
+    "release": "bun run scripts/release.js",
+    "release:patch": "bun run scripts/release.js patch",
+    "release:minor": "bun run scripts/release.js minor",
+    "release:major": "bun run scripts/release.js major",
+    "release:beta": "bun run prepublishOnly && npm publish --tag beta",
+    "package:plugin": "bun run scripts/package-plugin.js",
+    "package:plugin:zip": "cd dist/plugin && zip -r ../../obsidian-lint-plugin.zip . && cd ../.."
+  },
+  "keywords": [
+    "obsidian",
+    "markdown",
+    "linting",
+    "vault",
+    "organization",
+    "cli",
+    "typescript",
+    "note-taking",
+    "knowledge-management",
+    "automation",
+    "frontmatter",
+    "linking",
+    "file-organization"
+  ],
+  "author": "Obsidian Lint Tool",
+  "license": "MIT",
+  "homepage": "https://github.com/obsidian-lint/obsidian-lint#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/obsidian-lint/obsidian-lint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/obsidian-lint/obsidian-lint/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/obsidian-lint"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@iarna/toml": "^2.2.5",
+    "chalk": "^5.0.0",
+    "cli-progress": "^3.12.0",
+    "commander": "^11.0.0",
+    "glob": "^10.0.0",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5"
+  },
+  "peerDependencies": {
+    "obsidian": "^1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "obsidian": {
+      "optional": true
+    }
+  },
+  "files": [
+    "dist/",
+    "config/",
+    "docs/",
+    "examples/",
+    "README.md",
+    "LICENSE",
+    "manifest.json"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

@@ -1,0 +1,20 @@
+[rule]
+id = "duplicate-file-detection.default"
+name = "Duplicate File Detection"
+description = "Detect and report duplicate files within the vault"
+category = "file-organization"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/Templates/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*"]
+
+[settings]
+comparison_method = "content"
+ignore_empty_files = true
+ignore_whitespace = false
+min_file_size = 0
+auto_remove_duplicates = false
+preserve_newest = true
+preserve_in_priority_paths = ["Projects/", "Important/"]

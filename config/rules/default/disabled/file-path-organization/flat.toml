@@ -1,0 +1,20 @@
+[rule]
+id = "file-path-organization.flat"
+name = "Flat File Organization"
+description = "Keep all files in a flat structure within the base directory"
+category = "file-organization"
+
+[config]
+path_allowlist = ["**/*.md"]
+path_denylist = ["Meta/**", "Templates/**"]
+include_patterns = ["**/*"]
+exclude_patterns = [".*"]
+
+[settings]
+base_directory = "Notes"
+create_subdirectories = false
+update_links = true
+preserve_existing_structure = false
+date_format = "YYYY/MM"
+topic_extraction_method = "frontmatter"
+max_depth = 1
